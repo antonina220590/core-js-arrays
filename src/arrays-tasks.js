@@ -286,8 +286,24 @@ function createNDimensionalArray(n, size) {
  *    flattenArray(['a', ['b', ['c', 'd'], 'e'], 'f']) => ['a', 'b', 'c', 'd', 'e', 'f']
  *    flattenArray([1, 2, 3, 4]) => [1, 2, 3, 4]
  */
-function flattenArray(/* nestedArray */) {
-  throw new Error('Not implemented');
+function flattenArray(nestedArray) {
+  /* VERSION 1 - recursion */
+  //   if (!nestedArray.length) return [];
+  //   const head = nestedArray.at(0);
+  //   const rest = nestedArray.slice(1);
+  //   if (Array.isArray(head)) {
+  //     return [...flattenArray(head), ...flattenArray(rest)];
+  //   }
+  //   return [head, ...flattenArray(rest)];
+
+  /* VERSION 1 - recursion using reduce method */
+  // return nestedArray.reduce((acc, val) => {
+  //   return acc.concat(Array.isArray(val) ? flattenArray(val) : val);
+  // }, []);
+
+  /* VERSION 3 - build-in method. Most effective */
+
+  return nestedArray.flat(Infinity);
 }
 
 /**
